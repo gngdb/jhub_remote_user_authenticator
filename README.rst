@@ -15,7 +15,7 @@ class::
 
     c.JupyterHub.authenticator_class = 'remote_user.remote_user_auth.RemoteUserAuthenticator'
 
-You should be able to start jupyterhub.  The "/remote_user_login" resource
+You should be able to start jupyterhub.  The "/login" resource
 will look for the authenticated user name in the HTTP header "REMOTE_USER".
 If found, and not blank, you will be logged in as that user.
 
