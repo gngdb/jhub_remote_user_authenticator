@@ -13,7 +13,7 @@ This project folder must be on your PYTHONPATH.
 You should edit your :file:`jupyterhub_config.py` to set the authenticator 
 class::
 
-    c.JupyterHub.authenticator_class = 'remote_user.remote_user_auth.RemoteUserAuthenticator'
+    c.JupyterHub.authenticator_class = 'remote_user.RemoteUserAuthenticator'
 
 You should be able to start jupyterhub.  The "/login" resource
 will look for the authenticated user name in the HTTP header "REMOTE_USER".

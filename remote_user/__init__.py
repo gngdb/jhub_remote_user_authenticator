@@ -1,1 +1,1 @@
-from remote_user_auth import *
+from .remote_user_auth import *
