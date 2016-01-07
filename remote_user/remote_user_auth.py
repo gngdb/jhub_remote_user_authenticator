@@ -88,6 +88,11 @@ class RemoteUserAuthenticator(LocalAuthenticator):
 
         self.add_user(nameduser)
 
+        # if we have a user initialisation script, run it now
+        if hasattr(self, 'postadduser_script'):
+            import subprocess
+            subprocess.call([self.postadduser_script, nameduser])
+
         return username
 
 
