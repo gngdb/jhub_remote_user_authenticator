@@ -1,5 +1,7 @@
 import os
 
+import subprocess
+
 from jupyterhub.handlers import BaseHandler
 
 from jupyterhub.auth import Authenticator
@@ -95,10 +97,11 @@ class RemoteUserAuthenticator(LocalAuthenticator):
 
         self.add_user(nameduser)
 
-        # if we have a user initialisation script, run it now
-        if self.postadduser_script:
-            import subprocess
-            subprocess.call([self.postadduser_script, nameduser])
+        user_exists = yield gen.maybe_future(self.system_user_exists(user))
+        if not user_exists:
+            # if we have a user initialisation script, run it now
+            if self.postadduser_script:
+                subprocess.call([self.postadduser_script, nameduser])
 
         return username
 
