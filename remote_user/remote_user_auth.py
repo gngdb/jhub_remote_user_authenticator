@@ -70,7 +70,7 @@ class RemoteUserAuthenticator(LocalAuthenticator):
     
         default_value=False,
 
-        config=True
+        config=True,
         
         help="""Path to script for user initialisation.""")
 
