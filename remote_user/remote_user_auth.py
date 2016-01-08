@@ -68,7 +68,7 @@ class RemoteUserAuthenticator(LocalAuthenticator):
 
     postadduser_script = Unicode(
     
-        default_value=False,
+        default_value='',
 
         config=True,
         
