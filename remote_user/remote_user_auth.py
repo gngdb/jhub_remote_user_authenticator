@@ -66,6 +66,13 @@ class RemoteUserAuthenticator(LocalAuthenticator):
 
         help="""HTTP header to inspect for the authenticated username.""")
 
+    postadduser_script = Unicode(
+    
+        default_value=False,
+
+        config=True
+        
+        help="""Path to script for user initialisation.""")
 
 
     def get_handlers(self, app):
@@ -89,13 +96,9 @@ class RemoteUserAuthenticator(LocalAuthenticator):
         self.add_user(nameduser)
 
         # if we have a user initialisation script, run it now
-        if hasattr(self, 'postadduser_script'):
+        if self.postadduser_script:
             import subprocess
             subprocess.call([self.postadduser_script, nameduser])
 
         return username
-
-
-
-
 
