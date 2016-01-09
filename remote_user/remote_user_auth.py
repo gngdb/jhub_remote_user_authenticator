@@ -101,7 +101,7 @@ class RemoteUserAuthenticator(LocalAuthenticator):
         if not user_exists:
             # if we have a user initialisation script, run it now
             if self.postadduser_script:
-                subprocess.call([self.postadduser_script, nameduser])
+                subprocess.call([self.postadduser_script, nameduser.name])
 
         return username
 
