@@ -97,8 +97,8 @@ class RemoteUserAuthenticator(LocalAuthenticator):
 
         self.add_user(nameduser)
 
-        user_exists = yield gen.maybe_future(self.system_user_exists(nameduser))
-        if not user_exists:
+        if not os.path.exists(os.path.join(["/home", nameduser.name, 
+                                            "dds-notebooks"]))
             # if we have a user initialisation script, run it now
             if self.postadduser_script:
                 subprocess.call([self.postadduser_script, nameduser.name])
